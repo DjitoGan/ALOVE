@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>ALOVE Docs</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css">
+  <style>
+    :root { --theme-color: #0FAF64; }
+    .app-nav .lang-switch { margin-left: auto; padding: 0 8px; }
+    .app-name-link { font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div id="app">Loading ALOVE documentation…</div>
+  <script>
+    window.$docsify = {
+      name: 'ALOVE',
+      repo: '',
+      loadSidebar: '_sidebar.md',
+      subMaxLevel: 3,
+      auto2top: true,
+      homepage: 'en/README.md',
+      routerMode: 'hash',
+      relativePath: true,
+      plugins: [
+        function (hook, vm) {
+          hook.mounted(function() {
+            var nav = document.querySelector('.app-nav');
+            if (nav && !document.querySelector('.lang-switch')) {
+              var sw = document.createElement('div');
+              sw.className = 'lang-switch';
+              sw.innerHTML = '<a href="#" data-lang="en">EN</a> | <a href="#" data-lang="fr">FR</a>';
+              nav.appendChild(sw);
+              nav.addEventListener('click', function(e) {
+                var t = e.target;
+                if (t && t.dataset && t.dataset.lang) {
+                  e.preventDefault();
+                  if (t.dataset.lang === 'en') window.location.hash = '#/en/';
+                  if (t.dataset.lang === 'fr') window.location.hash = '#/fr/';
+                }
+              });
+            }
+          });
+        }
+      ]
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script> mermaid.initialize({ startOnLoad: true, theme: 'dark' }); </script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-mermaid@2/dist/docsify-mermaid.min.js"></script>
+</body>
+</html>

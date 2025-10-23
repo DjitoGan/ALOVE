@@ -1,0 +1,13 @@
+sequenceDiagram
+  autonumber
+  participant Dev as Developer
+  participant CI as CI/CD
+  participant DEV as DEV Env
+  participant UAT as UAT Env
+  participant PROD as PROD Env
+  Dev->>CI: Push PR (lint/tests/build)
+  CI-->>DEV: Auto-deploy preview/DEV
+  Dev->>CI: Tag release
+  CI-->>UAT: Deploy UAT
+  UAT-->>CI: Approve CAB (Change Advisory Board)
+  CI-->>PROD: Deploy PROD + Sentry release

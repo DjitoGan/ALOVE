@@ -1,0 +1,7 @@
+erDiagram
+  vehicle_make { int id PK; string name UK }
+  vehicle_model { int id PK; int make_id FK; string name; UK make_id name }
+  vehicle_year { int id PK; int model_id FK; int year; UK model_id year }
+  engine_spec { int id PK; int year_id FK; string code; string fuel; float capacity_l; int power_hp; UK year_id code }
+  part { int id PK; int vendor_id FK; string title; text description; string[] oem_refs; string condition; int price_cents; string currency; int stock; string status; string country; string city }
+  part_fitment { int id PK; int part_id FK; int engine_id FK; UK part_id engine_id }

@@ -1,0 +1,18 @@
+flowchart TB
+  subgraph Client
+    A1[Mobile Web (Next.js PWA)]
+  end
+  subgraph API[API Monolith (NestJS)]
+    M1[Auth]
+    M2[Catalog]
+    M3[Order]
+    M4[Payment]
+    M5[Notification]
+    M6[Admin]
+  end
+  A1 -->|REST/JWT| API
+  API --> PG[(PostgreSQL 16)]
+  API --> RD[(Redis 7)]
+  API --> MS[(Meilisearch)]
+  API --> ST[(S3/R2 Storage)]
+  ST --> CDN[(CDN Edge)]

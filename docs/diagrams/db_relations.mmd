@@ -1,0 +1,19 @@
+erDiagram
+  user ||--o{ vendor_member : includes
+  vendor ||--o{ vendor_member : has
+  vendor ||--o{ part : sells
+  part ||--o{ part_image : has
+  part ||--o{ part_fitment : fits
+  engine_spec ||--o{ part_fitment : target
+  vehicle_make ||--o{ vehicle_model : has
+  vehicle_model ||--o{ vehicle_year : has
+  vehicle_year ||--o{ engine_spec : has
+  order ||--o{ order_item : contains
+  order_item }o--|| vendor : for
+  order ||--o{ payment : has
+  vendor ||--o{ vendor_balance_tx : payout
+  address }o--|| user : belongs
+  shipment }o--|| order : for
+  return_request }o--|| order_item : relates
+  refund }o--|| payment : reverses
+  favorite }o--|| user : tracks

@@ -1,0 +1,10 @@
+flowchart LR
+  SA[Super Admin] -->|Global| ALL[(All Domains)]
+  CA[Country Admin] -->|Country-limited| MOD[Moderation]
+  CA --> CFG[Country Config]
+  KYC[Compliance/KYC] --> SELL[Sellers]
+  FIN[Finance Admin] --> LED[Ledger & Refunds]
+  MKT[Marketing Admin] --> CMP[Campaigns]
+  SUP[Support Agent] --> ORD[Order Views]
+  CATM[Catalog Moderator] --> LST[Listings]
+  VSU[Vendor Success] --> IMP[Imports & Quality]
